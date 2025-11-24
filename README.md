@@ -19,7 +19,8 @@ Tinkercad provides a simulation environment where this circuit can be virtually 
 
 
 ## Circuit Diagram:
- 
+ <img width="1157" height="726" alt="image" src="https://github.com/user-attachments/assets/4d994b61-c574-49d0-aea7-ec67be7a91d8" />
+
 ## Procedure: //Modify the procedure based on your circuit
 
 Step 1: Set Up the Tinkercad Environment
@@ -53,10 +54,67 @@ Step 7: Save Your Work
 
 
 ## Code:
+#define trigPin  7
+#define echoPin  6
+int buzzer = 2;
+
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  
+}
+
+void loop()
+{
+  long highPulseDuration;
+  
+  int calculateDistancecm;
+  
+  digitalWrite(trigPin, LOW);
+  
+  delayMicroseconds(2);
+  
+  digitalWrite(trigPin, HIGH);
+  
+  delayMicroseconds(10);
+  
+  digitalWrite(trigPin, LOW);
+  
+  highPulseDuration = pulseIn(echoPin, HIGH);
+  
+  calculateDistancecm =highPulseDuration*0.034/2;
+  
+  Serial.print("Calculated Distance:");
+  
+  Serial.print(calculateDistancecm);
+  
+  Serial.println("cm");
+  
+  if (calculateDistancecm <100){
+  
+    digitalWrite(2,HIGH);
+    
+    delay(1000);
+    
+  }else{
+  
+    digitalWrite(2,LOW);
+    
+    delay(1000);
+    
+  }
+  
+}
 
 
 ## Output:
- 
+
+
+https://github.com/user-attachments/assets/9c72801e-ab2a-4c60-a62d-a5b340889f44
+
+
 
 
 ## Result
